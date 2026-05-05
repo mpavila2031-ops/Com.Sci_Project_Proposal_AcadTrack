@@ -41,3 +41,14 @@ def GetDate():
             return date_text
         except ValueError:
             print("Invalid date. Please use YYYY-MM-DD.")
+
+def GetType():
+    while True:
+        print("\nChoose task type:")
+        print("1. Assignment")
+        print("2. Quiz")
+        print("3. Project")
+        print("4. Exam")
+
+
+
