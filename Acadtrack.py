@@ -16,7 +16,28 @@ from datetime import datetime
 
 task_list = []
 
+
 def ShowMenu():
-  print("\n===== ACADTRACK MENU =====")
-  print("1. Add task")
- hi liam can u see this
+    print("\n===== ACADTRACK MENU =====")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task as Completed")
+    print("4. Delete Task")
+    print("5. Exit")
+
+def GetText(msg):
+    while True:
+        text = input(msg).strip()
+        if text == "":
+            print("Input cannot be empty. Please try again.")
+        else:
+            return text
+
+def GetDate():
+    while True:
+        date_text = input("Enter due date (YYYY-MM-DD): ").strip()
+        try:
+            datetime.strptime(date_text, "%Y-%m-%d")
+            return date_text
+        except ValueError:
+            print("Invalid date. Please use YYYY-MM-DD.")
