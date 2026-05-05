@@ -55,8 +55,9 @@ def GetType():
         print("2. Quiz")
         print("3. Project")
         print("4. Exam")
+        print("5. Other")
         
-         choice = input("Enter choice (1-5): ").strip()
+        choice = input("Enter choice (1-5): ").strip()
 
         # Decision statements for task type selection
         if choice == "1":
@@ -82,16 +83,17 @@ def AddTask():
     task_type = GetType()
     due = GetDate()
 
-# Create a dictionary for one task
-task = {
+    # Create a dictionary for one task
+    task = {
         "subject": subject,
         "name": name,
         "type": task_type,
         "due": due,
-        "status": "Pending"}
-
-# Add the task to the main list
-task_list.append(task)
+        "status": "Pending"
+    }
+    
+    # Add the task to the main list
+    task_list.append(task)
     print("Task added successfully.")
 
 # This function displays all tasks sorted by due date
@@ -104,7 +106,7 @@ def ViewTasks():
         return []
 
     # Sort tasks by due date
-     sorted_list = sorted(task_list, key=lambda x: x["due"])
+    sorted_list = sorted(task_list, key=lambda x: x["due"])
 
     # Display each task with numbering
     for i, task in enumerate(sorted_list, 1):
