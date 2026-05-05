@@ -50,5 +50,102 @@ def GetType():
         print("3. Project")
         print("4. Exam")
 
+def AddTask():
+    print("\n===== ADD TASK =====")
+    subject = GetText("Enter subject: ")
+    name = GetText("Enter task name: ")
+    task_type = GetType()
+    due = GetDate()
+    
+task = {
+        "subject": subject,
+        "name": name,
+        "type": task_type,
+        "due": due,
+        "status": "Pending"}
+
+task_list.append(task)
+    print("Task added successfully.")
+
+def ViewTasks():
+    print("\n===== TASK LIST =====")
+
+    if len(task_list) == 0:
+        print("No tasks available.")
+        return []
+
+
+     sorted_list = sorted(task_list, key=lambda x: x["due"])
+
+    for i, task in enumerate(sorted_list, 1):
+        print(f"\nTask #{i}")
+        print(f"Subject : {task['subject']}")
+        print(f"Task    : {task['name']}")
+        print(f"Type    : {task['type']}")
+        print(f"Due     : {task['due']}")
+        print(f"Status  : {task['status']}")
+
+    return sorted_list
+
+
+def MarkDone():
+    print("\n===== MARK TASK AS COMPLETED =====")
+
+    if len(task_list) == 0:
+        print("No tasks available.")
+        return
+
+    sorted_list = ViewTasks()
+
+    while True:
+        num = input("\nEnter task number to mark as completed: ").strip()
+
+        if not num.isdigit():
+            print("Please enter a valid number.")
+            continue
+
+        num = int(num)
+
+        if 1 <= num <= len(sorted_list):
+            sorted_list[num - 1]["status"] = "Completed"
+            print("Task marked as completed.")
+            break
+        else:
+            print("Task number is out of range.")
+
+def DeleteTask():
+    print("\n===== DELETE TASK =====")
+
+    if len(task_list) == 0:
+        print("No tasks available.")
+        return
+
+    sorted_list = ViewTasks()
+
+    while True:
+        num = input("\nEnter task number to delete: ").strip()
+
+        if not num.isdigit():
+            print("Please enter a valid number.")
+            continue
+
+        num = int(num)
+
+        if 1 <= num <= len(sorted_list):
+            task_list.remove(sorted_list[num - 1])
+            print("Task deleted successfully.")
+            break
+        else:
+            print("Task number is out of range.")
+
+
+
+
+
+
+
+
+    
+
 
 
